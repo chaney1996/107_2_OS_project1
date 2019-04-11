@@ -1,10 +1,10 @@
 # 107_2_OS_project1
 
 
-framework：
+## framework
 
-schdeuling function
-FIFO:
-RR:
-SJF:
-PSJF
+## Schdeuling
+* FIFO:
+* RR:
+* SJF:
+* PSJF
