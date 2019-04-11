@@ -1,9 +1,9 @@
 # 107_2_OS_project1
 
 
-## framework
+#### Framework
 
-## Schdeuling
+#### Schdeuling
 * FIFO:
 * RR:
 * SJF:
