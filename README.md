@@ -7,7 +7,7 @@
 
 
 #### main.c
-> 將input資料寫入成多個 process，並根據選擇的 schedule policy 選擇 "schedule.h" 中不同的 function.
+> 將input資料寫入成多個 process，並根據輸入的 schedule policy 選擇 "schedule.h" 中不同的 function.
 
 #### process
 > 定義 process structure、CPU指定、設定 process 的 priority等等.
