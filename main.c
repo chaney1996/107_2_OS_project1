@@ -17,7 +17,7 @@ int main()
 
     // printf("%s , %d\n", policy , process_num);
 
-    struct Process *proc = (struct Process*)malloc(process_num * sizeof(struct Process));
+    Process *proc = (Process*)malloc(process_num * sizeof(Process));
 
     for(i = 0 ; i < process_num ; i++)
     {

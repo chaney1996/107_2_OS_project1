@@ -2,17 +2,17 @@
 #define _PROCESS_H_
 
 
+#define exec_unit_time()   { volatile unsigned long i; for(i=0;i<1000000UL;i++); }
 
-
-struct Process
+typedef struct _Process
 {
     char name[4];
     int ready_time;
     int exec_time;
 
-};
+}Process;
 
-
+int process_execute(Process proc);
 
 
 

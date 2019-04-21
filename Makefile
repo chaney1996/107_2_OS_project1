@@ -2,11 +2,11 @@
 
 C = gcc
 
+obj-m += project1.o
+project1-objs := main.o process.o schedule.o
 
-
-
-all: main.o process.o schedule.o
-	$(C) main.o process.o schedule.o -o main
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 	
 main.o: main.c
 	$(C) main.c -c
@@ -18,4 +18,11 @@ schedule.o: schedule.c schedule.h
 	$(C) schedule.c -c
 
 clean:
-	$(RM) *.o main
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	rm *.o main
+
+
+
+
+
+	
