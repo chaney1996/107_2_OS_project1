@@ -1,6 +1,6 @@
 # 107_2_OS_project1
 
-## Add System Call - for printk()
+## Add System Call
 
 ##### copy kernel_files/sys_proc_time.c to linux/kernel/sys_proc_time.c
 
