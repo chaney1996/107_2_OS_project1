@@ -15,8 +15,7 @@ int main()
     scanf("%s", policy);
     scanf("%d", &process_num);
 
-    // printf("%s , %d\n", policy , process_num);
-
+    /* Create process array */
     Process *proc = (Process*)malloc(process_num * sizeof(Process));
 
     for(i = 0 ; i < process_num ; i++)
