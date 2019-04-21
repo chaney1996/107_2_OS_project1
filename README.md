@@ -1,6 +1,6 @@
 # 107_2_OS_project1
 
-#### Add System Call
+## Add System Call - for printk()
 
 ##### copy kernel_files/sys_proc_time.c to linux/kernel/sys_proc_time.c
 
@@ -20,7 +20,7 @@
 <pre><code>make bzImage -j 4</code></pre>
 <pre><code>sudo make install -j 4</code></pre>
 
-#### Compile & Execution 
+## Compile & Execution 
 <pre><code>make all</code></pre>
 <pre><code>./main < test_data.txt</code></pre>
 
