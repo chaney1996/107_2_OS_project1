@@ -12,6 +12,7 @@ typedef struct _Process
 
 }Process;
 
+int assign_CPU(int pid , int core_number);
 int process_execute(Process proc);
 
 
