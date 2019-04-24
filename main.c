@@ -27,7 +27,7 @@ int main()
     {
         printf("FIFO has been read.\n");
         /* TODO */
-        // FIFO_scheduling();
+        // FIFO_scheduling(proc);
     }
     else if(strcmp(policy , "RR") == 0)
     {
