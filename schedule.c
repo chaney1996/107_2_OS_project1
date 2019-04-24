@@ -9,9 +9,11 @@
 
 
 /* TODO */
-// int FIFO_scheduling(...)
+// int FIFO_scheduling(proc[])
 // {
-
+//    int i;
+//    for(i=0; i<sizeof(proc)/sizeof(proc[0]); i++)
+//        process_execute(proc[i]);
 // }
 
 
