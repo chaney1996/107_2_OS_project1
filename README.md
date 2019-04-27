@@ -2,28 +2,35 @@
 
 ## Add System Call
 ##### 1. Download and extract kernel, take [[OS-HW1]](https://docs.google.com/presentation/d/1KwS9PuGZxLXQ9IEYJE7KUhnz3bHohJLWOH-CRGZkC40/edit#slide=id.p25) as reference
-##### 2. copy  kernel_files/sys_proc_time.c  to  linux/kernel/sys_proc_time.c
+##### 2. copy  kernel_files/sys_proc_time.c  to  linux-x.x.x/kernel/sys_proc_time.c
 
-##### 3. add in linux/kernel/Makefile:
+##### 3. add in linux-x.x.x/kernel/Makefile:
 <pre><code>obj -y += sys_proc_time.o</code></pre>
 
-##### 4. add in linux/include/linux/syscall.h:
+##### 4. add in linux-x.x.x/include/linux/syscall.h:
 <pre><code>asmlinkage int sys_proc_time(int start, unsigned long *start_sec,
                             unsigned long *start_nsec, unsigned long *end_sec, 
                             unsigned long *end_nsec, int *pid);
 </code></pre>
 
-##### 5. add in linux/arch/x86/entry/syscalls/syscall_64.tbl:
+##### 5. add in linux-x.x.x/arch/x86/entry/syscalls/syscall_64.tbl:
 <pre><code>345 common proc_time sys_proc_time</code></pre>
-
-##### 6. Comfigure and Compile Kernel
-<pre><code>make bzImage -j 4</code></pre>
-<pre><code>sudo make install -j 4</code></pre>
+##### 6. create .config and first time kernel compilation
+<pre><code>$cd linux-x.x.x
+$make menuconfig
+$make bzImage
+$sudo make modules_install
+$sudo make install
+$sudo mkinitramfs -o /boot/initrd.img-4.14.25
+'''reboot'''</code></pre>
+##### 6. Comfigure and Compile Kernel (4 = number of cores)
+<pre><code>$make -j4 bzImage
+$sudo make -j4 install</code></pre>
 
 ## Compile & Execute this project
 ##### Linux is recommended , Windows may cause compile errors at fork() or other system calls.
-<pre><code>make main</code></pre>
-<pre><code>./main < test_data.txt</code></pre>
+<pre><code>make main
+./main < test_data.txt</code></pre>
 
 
 #### main.c
