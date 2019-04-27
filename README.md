@@ -22,7 +22,7 @@
 
 ## Compile & Execute this project
 ##### Linux is recommended , Windows may cause compile errors at fork() or other system calls.
-<pre><code>make all</code></pre>
+<pre><code>make main</code></pre>
 <pre><code>./main < test_data.txt</code></pre>
 
 
