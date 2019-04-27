@@ -2,7 +2,7 @@
 
 ## Add System Call
 ##### 1. Download and extract kernel, take http://rswiki.csie.org/dokuwiki/courses:107_2:os as reference
-##### 2. copy kernel_files/sys_proc_time.c to linux/kernel/sys_proc_time.c
+##### 2. copy  kernel_files/sys_proc_time.c  to  linux/kernel/sys_proc_time.c
 
 ##### 3. add in linux/kernel/Makefile:
 <pre><code>obj -y += sys_proc_time.o</code></pre>
