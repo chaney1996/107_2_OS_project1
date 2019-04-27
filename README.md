@@ -1,7 +1,7 @@
 # 107_2_OS_project1
 
 ## Add System Call
-##### 1. Download and extract kernel, take http://rswiki.csie.org/dokuwiki/courses:107_2:os as reference
+##### 1. Download and extract kernel, take [[OS-HW1]](https://docs.google.com/presentation/d/1KwS9PuGZxLXQ9IEYJE7KUhnz3bHohJLWOH-CRGZkC40/edit#slide=id.p25) as reference
 ##### 2. copy  kernel_files/sys_proc_time.c  to  linux/kernel/sys_proc_time.c
 
 ##### 3. add in linux/kernel/Makefile:
