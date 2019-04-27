@@ -9,7 +9,7 @@
 
 ##### 3、add in linux/include/linux/syscall.h:
 <pre><code>asmlinkage int sys_proc_time(int start, unsigned long *start_sec,
-                            unsigend long *start_nsec, unsigned long *end_sec, 
+                            unsigned long *start_nsec, unsigned long *end_sec, 
                             unsigned long *end_nsec, int *pid) 
 </code></pre>
 
