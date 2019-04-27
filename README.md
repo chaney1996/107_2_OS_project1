@@ -23,7 +23,7 @@ $sudo make modules_install
 $sudo make install
 $sudo mkinitramfs -o /boot/initrd.img-4.14.25
 '''reboot'''</code></pre>
-##### 6. Comfigure and Compile Kernel (4 = number of cores)
+##### 7. Comfigure and Compile Kernel (4 = number of cores)
 <pre><code>$make -j4 bzImage
 $sudo make -j4 install</code></pre>
 
