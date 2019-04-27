@@ -10,7 +10,7 @@ $tar Jxvf linux-5.0.10.tar.xz
 ##### 3. add in linux-x.x.x/kernel/Makefile:
 <pre><code>obj-y += sys_proc_time.o</code></pre>
 
-##### 4. add in linux-x.x.x/include/linux/syscall.h:
+##### 4. add in linux-x.x.x/include/linux/syscalls.h:
 <pre><code>asmlinkage int sys_proc_time(int start, unsigned long *start_sec,
                             unsigned long *start_nsec, unsigned long *end_sec, 
                             unsigned long *end_nsec, int *pid);
