@@ -2,9 +2,9 @@
 
 ## Add System Call
 ##### 1. Download and extract kernel, take [[OS-HW1]](https://docs.google.com/presentation/d/1KwS9PuGZxLXQ9IEYJE7KUhnz3bHohJLWOH-CRGZkC40/edit#slide=id.p25) as reference
-> (Download on https://www.kernel.org/) $wget https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.10.tar.xz
-> (extract) $tar Jxvf linux-5.0.10.tar.xz
-
+<pre><code>$wget https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.10.tar.xz (Download on https://www.kernel.org/)
+$tar Jxvf linux-5.0.10.tar.xz
+</code></pre>
 ##### 2. copy  kernel_files/sys_proc_time.c  to  linux-x.x.x/kernel/sys_proc_time.c
 
 ##### 3. add in linux-x.x.x/kernel/Makefile:
