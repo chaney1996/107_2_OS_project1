@@ -18,14 +18,18 @@ $tar Jxvf linux-5.0.10.tar.xz
 
 ##### 5. add in linux-x.x.x/arch/x86/entry/syscalls/syscall_64.tbl:
 <pre><code>345 common proc_time sys_proc_time</code></pre>
+
 ##### 6. create .config and first time kernel compilation
 <pre><code>$cd linux-x.x.x
 $make menuconfig
+(if 'make menuconfig' error) $sudo apt-get install libncurses5-dev libncursesw5-dev
+(if 'make menuconfig' error) $sudo apt-get install flex bison
 $make bzImage
 $sudo make modules_install
 $sudo make install
 $sudo mkinitramfs -o /boot/initrd.img-4.14.25
 '''reboot'''</code></pre>
+
 ##### 7. Comfigure and Compile Kernel (4 = number of cores)
 <pre><code>$make -j4 bzImage
 $sudo make -j4 install</code></pre>
