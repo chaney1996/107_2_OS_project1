@@ -20,7 +20,7 @@
 <pre><code>make bzImage -j 4</code></pre>
 <pre><code>sudo make install -j 4</code></pre>
 
-## Compile & Execution this project
+## Compile & Execute this project
 ##### Linux is recommended , Windows may cause compile errors at fork() or other system calls.
 <pre><code>make all</code></pre>
 <pre><code>./main < test_data.txt</code></pre>
