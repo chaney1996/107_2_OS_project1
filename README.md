@@ -23,15 +23,15 @@ $tar Jxvf linux-5.0.10.tar.xz
 <pre><code>$cd linux-x.x.x
 $make menuconfig
 </code></pre>
-> if 'make menuconfig' error ...
+<pre>
+> ... if 'make menuconfig' error ...
 > $sudo apt-get install libncurses5-dev libncursesw5-dev
-> $sudo apt-get install flex bison
-<code>
-$make bzImage
+> $sudo apt-get install flex bison <pre>
+<pre><code>$make bzImage
 $sudo make modules_install
 $sudo make install
 $sudo mkinitramfs -o /boot/initrd.img-4.14.25
-'''reboot'''</code>
+'''reboot'''</code></pre>
 
 ##### 7. Comfigure and Compile Kernel (4 = number of cores)
 <pre><code>$make -j4 bzImage
