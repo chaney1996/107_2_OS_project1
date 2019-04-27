@@ -22,8 +22,8 @@ $tar Jxvf linux-5.0.10.tar.xz
 ##### 6. create .config and first time kernel compilation
 <pre><code>$cd linux-x.x.x
 $make menuconfig
-(if 'make menuconfig' error) $sudo apt-get install libncurses5-dev libncursesw5-dev
-(if 'make menuconfig' error) $sudo apt-get install flex bison
+>>(if 'make menuconfig' error) $sudo apt-get install libncurses5-dev libncursesw5-dev
+>>(if 'make menuconfig' error) $sudo apt-get install flex bison
 $make bzImage
 $sudo make modules_install
 $sudo make install
