@@ -7,7 +7,7 @@
 #include <time.h>
 #include "process.h"
 #include "schedule.h"
-#include <unistd.h>
+#include <unistd.h> //for system call
 
 
 /* assign process to specified CPU core_number */
