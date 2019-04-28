@@ -28,6 +28,7 @@ $make menuconfig
 > $sudo apt-get install libncurses5-dev libncursesw5-dev <br>
 > $sudo apt-get install flex bison <br>
 <pre><code>$make bzImage
+$sudo make modules
 $sudo make modules_install
 $sudo make install
 $sudo mkinitramfs -o /boot/initrd.img-4.14.25
