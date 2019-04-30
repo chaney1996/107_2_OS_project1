@@ -138,14 +138,14 @@ int SJF_next_process(int n  ,struct Process proc[]){
 
 int scheduling(struct Process *proc, int nproc, int policy)
 {
-	qsort(proc, nproc, sizeof(struct process), cmp);
+	qsort(proc, nproc, sizeof(struct Process), cmp);
 
 	/* Initial pid = -1 imply not ready */
 	for (int i = 0; i < nproc; i++)
 		proc[i].pid = -1;
 
 	/* Set single core prevent from preemption */
-	proc_assign_cpu(0, PARENT_CPU);
+	assign_CPU(0, PARENT_CPU);
 	
 	/* Set high priority to scheduler */
 	proc_set_status( 0 , WAKE);
@@ -177,8 +177,8 @@ int scheduling(struct Process *proc, int nproc, int policy)
 
 		/* Check if process ready and execute */
 		for (int i = 0; i < nproc; i++) {
-			if (proc[i].t_ready == ntime) {
-				proc[i].pid = proc_exec(proc[i]);
+			if (proc[i].ready_time == ntime) {
+				proc[i].pid = process_execute(proc[i]);
 				proc_set_status( proc[i].pid , BLOCK);
 #ifdef DEBUG
 				fprintf(stderr, "%s ready at time %d.\n", proc[i].name, ntime);
@@ -200,9 +200,9 @@ int scheduling(struct Process *proc, int nproc, int policy)
 		}
 
 		/* Run an unit of time */
-		proc_unit_time();
+		exec_unit_time();
 		if (running != -1)
-			proc[running].t_exec--;
+			proc[running].exec_time--;
 		ntime++;
 	}
 
