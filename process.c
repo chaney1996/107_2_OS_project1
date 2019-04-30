@@ -51,7 +51,7 @@ int process_execute(Process proc)
 }
 
 
-int proc_set_status(int pid , int status)
+int proc_set_status(pid_t pid , int mod)
 {
 	struct sched_param param = { .sched_priority  = 0 };
 	
