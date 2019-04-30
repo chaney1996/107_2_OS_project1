@@ -49,7 +49,13 @@ $./main < test_data.txt</code></pre>
 
 #### process
 > 定義 process structure、CPU指定、設定 process 的 priority等等.
-
+<pre><code>#define exec_unit_time()   { volatile unsigned long i; for(i=0;i<1000000UL;i++); }
+#define CHILD_CPU 1
+#define PARENT_CPU 0
+int assign_CPU(int pid , int core_number); //assign process to specified CPU core_number.
+int process_execute(Process proc); //execute while process is ready.
+int proc_block(int pid); //SCHED_IDLE set priority to 0.
+int proc_wakeup(int pid); //set a high priority to process for execution as the next. </code></pre>
 #### schedule
 > 依據 schedule policy 在不同的 process 中選擇，給予接下來要執行的 process 最高 priority。
 
