@@ -51,31 +51,23 @@ int process_execute(Process proc)
 }
 
 
-int proc_block(int pid)
+int proc_set_status(int pid , int status)
 {
 	struct sched_param param = { .sched_priority  = 0 };
-
-	int ret = sched_setscheduler(pid, SCHED_IDLE, &param);
 	
-	if (ret < 0) {
-		perror("sched_setscheduler");
-		return -1;
+	if( status == BLOCK ){
+		if ( sched_setscheduler(pid, SCHED_IDLE, &param) < 0) {
+			perror("SCHED_IDLE");
+			return -1;
+		}
 	}
-
-	return ret;
-}
-
-int proc_wakeup(int pid)
-{
-	struct sched_param param = { .sched_priority = 0 };
-
-	int ret = sched_setscheduler(pid, SCHED_OTHER, &param);
+	if( status == WAKE ){
+		if(  sched_setscheduler(pid, SCHED_OTHER, &param ) < 0){
+			perror("SCHED_OTHER");
+			return -1;	
+		}
+	}
 	
-	if (ret < 0) {
-		perror("sched_setscheduler");
-		return -1;
-	}
-
-	return ret;
+	return 0;
 }
 
