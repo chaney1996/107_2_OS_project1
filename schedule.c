@@ -26,7 +26,7 @@ static int finish_cnt;
 
 /* Sort processes by ready time */
 int cmp(const void *a, const void *b) {
-	return ((struct process *)a)->t_ready - ((struct process *)b)->t_ready;
+	return ((struct Process *)a)->ready_time - ((struct Process *)b)->ready_time;
 }
 
 /* Return index of next process  */
@@ -77,7 +77,7 @@ int next_process(struct process *proc, int nproc, int policy)
 	return ret;
 }
 
-int FIFO_next_process(int n  ,struct process proc[]){
+int FIFO_next_process(int n  ,struct Process proc[]){
 	if (running != -1)
 		return running;
 	int ret = -1;
@@ -90,7 +90,7 @@ int FIFO_next_process(int n  ,struct process proc[]){
 	return ret;
 }
 
-int RR_next_process(int n  ,struct process proc[])
+int RR_next_process(int n  ,struct Process proc[])
 	const int q = 5;
 	int ret = -1;
 
@@ -98,7 +98,7 @@ int RR_next_process(int n  ,struct process proc[])
 		for (int i = 0; i < n; i++) {
 			if( proc[i].pid < 0)
 				continue;
-			if ( proc[i].t_exec > 0)
+			if ( proc[i].exec_time > 0)
 				return i;
 		}
 	}
@@ -112,31 +112,31 @@ int RR_next_process(int n  ,struct process proc[])
 	return ret;
 }
 
-int PSJF_next_process(int n  ,struct process proc[]){
+int PSJF_next_process(int n  ,struct Process proc[]){
 	int ret = -1;
-	for (int i = 0; i < nproc; i++) {
-		if (proc[i].pid == -1 || proc[i].t_exec == 0)
+	for (int i = 0; i < n; i++) {
+		if (proc[i].pid == -1 || proc[i].exec_time == 0)
 			continue;
-		if (ret == -1 || proc[i].t_exec < proc[ret].t_exec)
+		if (ret == -1 || proc[i].exec_time < proc[ret].exec_time)
 			ret = i;
 	}
 	return ret;
 }
 
 
-int SJF_next_process(int n  ,struct process proc[]){
+int SJF_next_process(int n  ,struct Process proc[]){
 	if (running != -1)
 		return running;
 	int ret = -1;
-	for (int i = 0; i < nproc; i++) {
-		if (proc[i].pid == -1 || proc[i].t_exec == 0)
+	for (int i = 0; i < n; i++) {
+		if (proc[i].pid == -1 || proc[i].exec_time == 0)
 			continue;
-		if (ret == -1 || proc[i].t_exec < proc[ret].t_exec)
+		if (ret == -1 || proc[i].exec_time < proc[ret].exec_time)
 			ret = i;
 	}
 }
 
-int scheduling(struct process *proc, int nproc, int policy)
+int scheduling(struct Process *proc, int nproc, int policy)
 {
 	qsort(proc, nproc, sizeof(struct process), cmp);
 
@@ -159,7 +159,7 @@ int scheduling(struct process *proc, int nproc, int policy)
 		//fprintf(stderr, "Current time: %d\n", ntime);
 
 		/* Check if running process finish */
-		if (running != -1 && proc[running].t_exec == 0) {
+		if (running != -1 && proc[running].exec_time == 0) {
 		
 #ifdef DEBUG
 			fprintf(stderr, "%s finish at time %d.\n", proc[running].name, ntime);
