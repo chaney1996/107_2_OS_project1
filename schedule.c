@@ -86,7 +86,8 @@ int FIFO_next_process(int n  ,struct process proc[]){
 			continue;
 		if(ret == -1 || proc[i].t_ready < proc[ret].t_ready)
 			ret = i;
-	}	
+	}
+	return ret;
 }
 
 int RR_next_process(int n  ,struct process proc[])
