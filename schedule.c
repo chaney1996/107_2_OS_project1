@@ -191,16 +191,16 @@ int scheduling(struct Process *proc, int nproc, int policy)
 		/* Select next running  process */
 		
 		switch(policy){
-			case 1:
+			case 0:
 				int next = FIFO_next_process(proc, nproc);
 				break;
-			case 2:
+			case 1:
 				int next = RR_next_process(proc, nproc);
 				break;
-			case 3:
+			case 2:
 				int next = SJF_next_process(proc, nproc);
 				break;
-			case 4:
+			case 3:
 				int next = PSJF_next_process(proc, nproc);
 				break;
 		}
