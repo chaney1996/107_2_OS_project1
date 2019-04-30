@@ -45,30 +45,29 @@ int main()
     if(strcmp(policy , "FIFO") == 0)
     {
         printf("FIFO has been read.\n");
-        
-        FIFO_scheduling(proc, process_num);
+        policy = FIFO;
     }
     else if(strcmp(policy , "RR") == 0)
     {
         /* TODO */
-        // RR_scheduling(proc, process_num);
+        policy = RR;
     }
     else if(strcmp(policy , "SJF") == 0)
     {
         /* TODO */
-        // SJF_scheduling(proc, process_num);
+        policy = SJF;
     }
     else if(strcmp(policy , "PSJF") == 0)
     {
         /* TODO */
-        // PSJF_scheduling(proc, process_num);
+        policy = PSJF;
     }
     else
     {
         printf("Policy doesn't exist.\n");
         return -1;
     }
-    
+    scheduling(proc, process_num, policy);
 
     return 0;
 }
