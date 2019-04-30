@@ -106,7 +106,7 @@ int scheduling(struct process *proc, int nproc, int policy)
 		proc[i].pid = -1;
 
 	/* Set single core prevent from preemption */
-	proc_assign_cpu(getpid(), PARENT_CPU);
+	proc_assign_cpu(0, PARENT_CPU);
 	
 	/* Set high priority to scheduler */
 	proc_wakeup(getpid());
