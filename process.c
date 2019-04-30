@@ -42,10 +42,11 @@ int process_execute(Process proc)
         current_pid = getpid();
         syscall(345, 1, &start.tv_sec, &start.tv_nsec, &end.tv_sec, &end.tv_nsec, &current_pid);
         for (int i = 0; i < proc.exec_time; i++) {
-			exec_unit_time();
-		}
+		exec_unit_time();
+	}
         syscall(345, 0, &start.tv_sec, &start.tv_nsec, &end.tv_sec, &end.tv_nsec, &current_pid);
     }
+    assign_CPU( pid , 1);
     return 0;
 }
 
