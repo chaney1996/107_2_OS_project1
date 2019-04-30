@@ -19,9 +19,9 @@ int process_execute(Process proc);
 #define CHILD_CPU 1
 #define PARENT_CPU 0
 
-enum { WAKE , BLOCK , SWAP }
+enum { WAKE , BLOCK }
 
-int proc_set_priority(pid_t pid , int status);
+int proc_set_status(pid_t pid , int mod);
 
 
 #endif
