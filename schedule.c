@@ -24,10 +24,11 @@ static int running;
 /* Number of finish Process */
 static int finish_cnt;
 
-/* Sort processes by ready time */
+/* Sort processes by ready time 
 int cmp(const void *a, const void *b) {
 	return ((struct Process *)a)->ready_time - ((struct Process *)b)->ready_time;
 }
+*/
 
 /* Return index of next process  */
 int next_process(struct process *proc, int nproc, int policy)
@@ -138,7 +139,7 @@ int SJF_next_process(int n  ,struct Process proc[]){
 
 int scheduling(struct Process *proc, int nproc, int policy)
 {
-	qsort(proc, nproc, sizeof(struct Process), cmp);
+	//qsort(proc, nproc, sizeof(struct Process), cmp);
 
 	/* Initial pid = -1 imply not ready */
 	for (int i = 0; i < nproc; i++)
@@ -188,7 +189,24 @@ int scheduling(struct Process *proc, int nproc, int policy)
 		}
 
 		/* Select next running  process */
-		int next = next_process(proc, nproc, policy);
+		
+		switch(policy){
+			case 1:
+				int next = FIFO_next_process(proc, nproc);
+				break;
+			case 2:
+				int next = RR_next_process(proc, nproc);
+				break;
+			case 3:
+				int next = SJF_next_process(proc, nproc);
+				break;
+			case 4:
+				int next = PSJF_next_process(proc, nproc);
+				break;
+		}
+		
+		//int next = next_process(proc, nproc, policy);
+		
 		if (next != -1) {
 			/* Context switch */
 			if (running != next) {
