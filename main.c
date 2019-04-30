@@ -4,7 +4,7 @@
 #include "process.h"
 #include "schedule.h"
 
-//要先見個queue存嗎
+
 
 
 /* define comparison for quicksort*/
@@ -45,23 +45,23 @@ int main()
     if(strcmp(policy , "FIFO") == 0)
     {
         printf("FIFO has been read.\n");
-        /* TODO */
-        // FIFO_scheduling(proc);
+        
+        FIFO_scheduling(proc, process_num);
     }
     else if(strcmp(policy , "RR") == 0)
     {
         /* TODO */
-        // RR_scheduling();
+        // RR_scheduling(proc, process_num);
     }
     else if(strcmp(policy , "SJF") == 0)
     {
         /* TODO */
-        // SJF_scheduling();
+        // SJF_scheduling(proc, process_num);
     }
     else if(strcmp(policy , "PSJF") == 0)
     {
         /* TODO */
-        // PSJF_scheduling();
+        // PSJF_scheduling(proc, process_num);
     }
     else
     {
