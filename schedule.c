@@ -12,38 +12,6 @@
 #include <sched.h>
 
 
-
-
-/* TODO */
-// int FIFO_scheduling(proc[])
-// {
-//    int i;
-//    for(i=0; i<sizeof(proc)/sizeof(proc[0]); i++)
-//        process_execute(proc[i]);
-// }
-
-
-/* TODO */
-// int RR_scheduling(...)
-// {
-
-// }
-
-
-/* TODO */
-// int SJF_scheduling(...)
-// {
-
-// }
-
-
-/* TODO */
-// int PSJF_scheduling(...)
-// {
-
-// }
-
-
 /* Last context switch time for RR scheduling */
 static int t_last;
 
@@ -109,6 +77,26 @@ int next_process(struct process *proc, int nproc, int policy)
 	return ret;
 }
 
+int FIFO_next_process(int n  ,struct process proc[])
+	const int q = 5;
+	int ret = -1;
+
+        if (running == -1) {
+		for (int i = 0; i < n; i++) {
+			if (proc[i].pid != -1 && proc[i].t_exec > 0){
+				return i;
+			}
+		}
+	}
+	else if ((ntime - t_last) % q == 0)  {
+		ret = (running + 1) % n;
+		while (proc[ret].pid == -1 || proc[ret].t_exec == 0)
+			ret = (ret + 1) % nproc;
+	}
+	else
+		ret = running;
+	return ret;
+}
 int scheduling(struct process *proc, int nproc, int policy)
 {
 	qsort(proc, nproc, sizeof(struct process), cmp);
