@@ -9,7 +9,7 @@ typedef struct _Process
     char name[4];
     int ready_time;
     int exec_time;
-
+    pid_t pid;
 }Process;
 
 int assign_CPU(int pid , int core_number);
