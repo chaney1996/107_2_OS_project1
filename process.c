@@ -53,10 +53,7 @@ int process_execute(Process proc)
 
 int proc_block(int pid)
 {
-	struct sched_param param;
-	
-	/* SCHED_IDLE should set priority to 0 */
-	param.sched_priority = 0;
+	struct sched_param param = { .sched_priority  = 0 };
 
 	int ret = sched_setscheduler(pid, SCHED_IDLE, &param);
 	
@@ -70,10 +67,7 @@ int proc_block(int pid)
 
 int proc_wakeup(int pid)
 {
-	struct sched_param param;
-	
-	/* SCHED_OTHER should set priority to 0 */
-	param.sched_priority = 0;
+	struct sched_param param = { .sched_priority = 0 };
 
 	int ret = sched_setscheduler(pid, SCHED_OTHER, &param);
 	
