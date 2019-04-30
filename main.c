@@ -26,6 +26,7 @@ int main()
 {
     char policy[5];
     int process_num , i;
+    int policy;
 
     /* read in schedule policy and process number */
     scanf("%s", policy);
