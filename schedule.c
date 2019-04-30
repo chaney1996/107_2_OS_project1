@@ -97,6 +97,11 @@ int FIFO_next_process(int n  ,struct process proc[])
 		ret = running;
 	return ret;
 }
+
+int PSJF_next_process(int n  ,struct process proc[]){}
+int SJF_next_process(int n  ,struct process proc[]){}
+int RR_next_process(int n  ,struct process proc[]){}
+
 int scheduling(struct process *proc, int nproc, int policy)
 {
 	qsort(proc, nproc, sizeof(struct process), cmp);
