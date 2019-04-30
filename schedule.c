@@ -166,7 +166,7 @@ int scheduling(struct process *proc, int nproc, int policy)
 		}
 
 		/* Run an unit of time */
-		UNIT_T();
+		proc_unit_time();
 		if (running != -1)
 			proc[running].t_exec--;
 		ntime++;
