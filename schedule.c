@@ -76,7 +76,18 @@ int next_process(struct process *proc, int nproc, int policy)
 
 	return ret;
 }
-int FIFO_next_process(int n  ,struct process proc[]){}
+
+int FIFO_next_process(int n  ,struct process proc[]){
+	if (running != -1)
+		return running;
+	int ret = -1;
+	for(int i = 0; i < nproc; i++) {
+		if(proc[i].pid == -1 || proc[i].t_exec == 0)
+			continue;
+		if(ret == -1 || proc[i].t_ready < proc[ret].t_ready)
+			ret = i;
+	}	
+}
 
 int RR_next_process(int n  ,struct process proc[])
 	const int q = 5;
