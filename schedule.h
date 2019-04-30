@@ -6,17 +6,13 @@
 
 
 
-/* TODO */
-// int FIFO_scheduling(...);
+int FIFO_next_process(int , struct process*);
 
-/* TODO */
-// int RR_scheduling(...);
+int RR_next_process(int , struct process* );
 
-/* TODO */
-// int SJF_scheduling(...);
+int SJF_next_process(int , struct process* );
 
-/* TODO */
-// int PSJF_scheduling(...);
+int PSJF_next_process(int , struct process*);
 
 #define FIFO	1
 #define RR	2
