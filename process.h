@@ -6,24 +6,22 @@
 
 typedef struct _Process
 {
-    char name[4];
+    char name[32];
     int ready_time;
     int exec_time;
     pid_t pid;
 }Process;
 
-int assign_CPU(int pid , int core_number);
+int assign_CPU(pid_t pid , int core_number);
 int process_execute(Process proc);
 
 
 #define CHILD_CPU 1
 #define PARENT_CPU 0
 
-/* Set very low priority tp process */
-int proc_block(int pid);
+enum { WAKE , BLOCK , SWAP }
 
-/* Set high priority to process */
-int proc_wakeup(int pid);
+int proc_set_priority(pid_t pid , int status);
 
 
 #endif
