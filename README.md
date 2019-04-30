@@ -54,8 +54,7 @@ $./main < test_data.txt</code></pre>
 #define PARENT_CPU 0
 int assign_CPU(int pid , int core_number);  //assign process to specified CPU core_number.
 int process_execute(Process proc);          //execute while process is ready.
-int proc_block(int pid);      //SCHED_IDLE set priority to 0.
-int proc_wakeup(int pid);    //set a high priority to process for execution as the next. </code></pre>
+int proc_set_status(pid_t pid , int mod);   //set_priority </code></pre>
 #### schedule
 > 依據 schedule policy 在不同的 process 中選擇，給予接下來要執行的 process 最高 priority。
 
