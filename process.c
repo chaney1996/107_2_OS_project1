@@ -47,7 +47,7 @@ int process_execute(Process proc)
         syscall(345, 0, &start.tv_sec, &start.tv_nsec, &end.tv_sec, &end.tv_nsec, &current_pid);
     }
     assign_CPU( pid , 1);
-    return ;
+    return pid;
 }
 
 
