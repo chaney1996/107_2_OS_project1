@@ -126,7 +126,7 @@ int scheduling(struct process *proc, int nproc, int policy)
 	proc_assign_cpu(0, PARENT_CPU);
 	
 	/* Set high priority to scheduler */
-	proc_wakeup(getpid());
+	proc_set_status( 0 , WAKE);
 	
 	/* Initial scheduler */
 	ntime = 0;
@@ -157,7 +157,7 @@ int scheduling(struct process *proc, int nproc, int policy)
 		for (int i = 0; i < nproc; i++) {
 			if (proc[i].t_ready == ntime) {
 				proc[i].pid = proc_exec(proc[i]);
-				proc_block(proc[i].pid);
+				proc_set_status( proc[i].pid , BLOCK);
 #ifdef DEBUG
 				fprintf(stderr, "%s ready at time %d.\n", proc[i].name, ntime);
 #endif
@@ -170,8 +170,8 @@ int scheduling(struct process *proc, int nproc, int policy)
 		if (next != -1) {
 			/* Context switch */
 			if (running != next) {
-				proc_wakeup(proc[next].pid);
-				proc_block(proc[running].pid);
+				proc_set_status( proc[next].pid , WAKE);
+				proc_set_status( proc[running].pid , BLOCK);
 				running = next;
 				t_last = ntime;
 			}
