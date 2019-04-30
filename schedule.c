@@ -81,10 +81,10 @@ int FIFO_next_process(int n  ,struct process proc[]){
 	if (running != -1)
 		return running;
 	int ret = -1;
-	for(int i = 0; i < nproc; i++) {
-		if(proc[i].pid == -1 || proc[i].t_exec == 0)
+	for(int i = 0; i < n; i++) {
+		if(proc[i].pid == -1 || proc[i].exec_time == 0)
 			continue;
-		if(ret == -1 || proc[i].t_ready < proc[ret].t_ready)
+		if(ret == -1 || proc[i].ready_time < proc[ret].ready_time)
 			ret = i;
 	}
 	return ret;
