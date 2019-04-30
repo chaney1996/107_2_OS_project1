@@ -23,7 +23,7 @@ int PSJF_next_process(int , struct Process*);
 //int next_process(struct process *proc, int nproc, int policy);
 
 /* Running scheduler */
-int scheduling(struct process *proc, int nproc, int policy);
+int scheduling(struct Process *proc, int nproc, int policy);
 
 
 
