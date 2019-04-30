@@ -76,8 +76,9 @@ int next_process(struct process *proc, int nproc, int policy)
 
 	return ret;
 }
+int FIFO_next_process(int n  ,struct process proc[]){}
 
-int FIFO_next_process(int n  ,struct process proc[])
+int RR_next_process(int n  ,struct process proc[])
 	const int q = 5;
 	int ret = -1;
 
@@ -100,7 +101,6 @@ int FIFO_next_process(int n  ,struct process proc[])
 
 int PSJF_next_process(int n  ,struct process proc[]){}
 int SJF_next_process(int n  ,struct process proc[]){}
-int RR_next_process(int n  ,struct process proc[]){}
 
 int scheduling(struct process *proc, int nproc, int policy)
 {
