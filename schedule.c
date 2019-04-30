@@ -96,15 +96,16 @@ int RR_next_process(int n  ,struct process proc[])
 
         if (running == -1) {
 		for (int i = 0; i < n; i++) {
-			if (proc[i].pid != -1 && proc[i].t_exec > 0){
+			if( proc[i].pid < 0)
+				continue;
+			if ( proc[i].t_exec > 0)
 				return i;
-			}
 		}
 	}
 	else if ((ntime - t_last) % q == 0)  {
 		ret = (running + 1) % n;
-		while (proc[ret].pid == -1 || proc[ret].t_exec == 0)
-			ret = (ret + 1) % nproc;
+		while (proc[ret].pid < 0 || proc[ret].exec_time == 0)
+			ret = (ret + 1) % n;
 	}
 	else
 		ret = running;
