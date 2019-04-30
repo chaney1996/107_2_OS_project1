@@ -6,13 +6,13 @@
 
 
 
-int FIFO_next_process(int , struct process*);
+int FIFO_next_process(int , struct Process*);
 
-int RR_next_process(int , struct process* );
+int RR_next_process(int , struct Process* );
 
-int SJF_next_process(int , struct process* );
+int SJF_next_process(int , struct Process* );
 
-int PSJF_next_process(int , struct process*);
+int PSJF_next_process(int , struct Process*);
 
 #define FIFO	1
 #define RR	2
