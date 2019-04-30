@@ -49,7 +49,7 @@ int process_execute(Process proc)
     return 0;
 }
 
-/*
+
 int proc_block(int pid)
 {
 	struct sched_param param;
@@ -83,4 +83,4 @@ int proc_wakeup(int pid)
 
 	return ret;
 }
-*/
+
