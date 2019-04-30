@@ -112,8 +112,29 @@ int RR_next_process(int n  ,struct process proc[])
 	return ret;
 }
 
-int PSJF_next_process(int n  ,struct process proc[]){}
-int SJF_next_process(int n  ,struct process proc[]){}
+int PSJF_next_process(int n  ,struct process proc[]){
+	int ret = -1;
+	for (int i = 0; i < nproc; i++) {
+		if (proc[i].pid == -1 || proc[i].t_exec == 0)
+			continue;
+		if (ret == -1 || proc[i].t_exec < proc[ret].t_exec)
+			ret = i;
+	}
+	return ret;
+}
+
+
+int SJF_next_process(int n  ,struct process proc[]){
+	if (running != -1)
+		return running;
+	int ret = -1;
+	for (int i = 0; i < nproc; i++) {
+		if (proc[i].pid == -1 || proc[i].t_exec == 0)
+			continue;
+		if (ret == -1 || proc[i].t_exec < proc[ret].t_exec)
+			ret = i;
+	}
+}
 
 int scheduling(struct process *proc, int nproc, int policy)
 {
